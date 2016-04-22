@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8"/>
+  <title><%=title%></title>
+
+  <link href="http://fonts.googleapis.com/css?family=Cookie|Open+Sans:400,700" rel="stylesheet" />
+
+  <!-- bower:js -->
+  <script src="/lib/jquery/dist/jquery.js"></script>
+  <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+  <!-- endbower -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css" />
+  <!-- endbower -->
+  <!-- inject:js -->
+  <script src="/js/AddMenu.js"></script>
+  <script src="/js/clientOrder.js"></script>
+  <script src="/js/userOrder.js"></script>
+  <!-- endinject -->  
+  <!-- inject:css -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/styles.css">
+  <!-- endinject -->  
+  <!-- The main CSS file -->
+
+		<!--[if lt IE 9]>
+			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+      <![endif]-->
+    </head>
+
+    <!-- Declare a new AngularJS app and associate the controller -->
+    <body ng-app ng-controller="reciveOrders">
+
+      <form name="signInForm"  method="post" action="/auth/signin/">
+        <h1 align="center">Break!</h1>
+        <br>
+        <div id="todo-form" class="row">
+          <div class="col-sm-8 col-sm-offset-2 text-center">
+            <div class="form-group">
+              <input type="text" class="form-control input-md text-center" name="username" id="username" placeholder="User name">
+              <br>
+              <input type="password" class="form-control input-md text-center" name="password" id="password" placeholder="Password">
+              <br>
+            </div>
+            <button type="submit" name="submit" class="btn btn-block btn-success">Sign in</button>
+            <br>
+        </div>
+
+            </div>
+          <a button type="button" class="btn btn-sm"  href="/Client">Client?</button></a>
+          <a button type="button" class="btn btn-sm" href="/Signup">Sign up!</button></a>
+      </form>
+
+
+      <!-- Include AngularJS from Google's CDN -->
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    </body>
+    </html>

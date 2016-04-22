@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="expressNode">
+
+<head>
+	<meta charset="utf-8"/>
+	<title>No titile</title>
+
+<!-- 	<link href="http://fonts.googleapis.com/css?family=Cookie|Open+Sans:1000,1000" rel="stylesheet" />
+-->
+<script src="/lib/angular/angular.min.js"></script>
+<script src="/js/clientOrder.js"></script>
+
+<!-- bower:js -->
+<script src="/lib/jquery/dist/jquery.js"></script>
+<script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+<!-- endbower -->
+<!-- bower:css -->
+<link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+<!-- endbower -->
+<!-- inject:js -->
+<!-- endinject -->  
+<!-- inject:css -->
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/styles.css">
+<!-- endinject -->  
+<!-- The main CSS file -->
+
+		<!--[if lt IE 9]>
+			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+			<![endif]-->
+		</head>
+		<!-- SET THE CONTROLLER AND GET ALL TODOS WITH INITIALIZE FUNCTION -->
+		<body ng-controller="mainController" ng-init="initialize()">
+			<div class="container">
+				<!-- HEADER AND TODO COUNT -->
+				<form>
+					<h1 align="center">BREAK</h1>
+					<h4 align="center">Orders</h4>		
+                        <!-- Loop through the services array, assign a click handler, and set or
+                        remove the "active" css class if needed -->
+                        <div class="form-group">
+                        	<div class="row">
+                        		<div ng-repeat="order in usersOrders">
+                        			<ul>
+                        				<li ng-click="userDone(order)">
+                        					{{order[0]}}
+                        				</li>
+                        				<li ng-repeat="service in order[1]"  class="form-control input-lg"  ng-class="{active:service.active}" ng-click="removeOrder(service)">
+                        					<!-- Notice the use of the currency filter, it will format the price -->
+                        					{{service.name}} <span>{{service.price}} LE</span>
+                        				</li>
+                        			</ul>
+                        		</div>
+                        	</div>
+                        </form>         
+                    </div>
+                </div>
+                <script src="/socket.io/socket.io.js"></script>
+                <script>
+                	var socket = io('http://localhost:5082');
+                </script>
+            </body>
+            </html>

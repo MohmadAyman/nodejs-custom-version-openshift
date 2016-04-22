@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="expressNode">
+
+<head>
+	<meta charset="utf-8"/>
+	<title>No titile</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+	<link href="http://fonts.googleapis.com/css?family=Cookie|Open+Sans:400,700" rel="stylesheet" />
+	<script src="/js/app.js"></script>
+
+	<!-- bower:js -->
+	<script src="/lib/jquery/dist/jquery.js"></script>
+	<script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+	<!-- endbower -->
+	<!-- bower:css -->
+	<link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+	<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css" />
+	<!-- endbower -->
+	<!-- inject:js -->
+	<!-- endinject -->  
+	<!-- inject:css -->
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/styles.css">
+	<!-- endinject -->  
+	<!-- The main CSS file -->
+
+		<!--[if lt IE 9]>
+			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+			<![endif]-->
+
+		</head>
+		<!-- SET THE CONTROLLER AND GET ALL TODOS WITH INITIALIZE FUNCTION -->
+		<body ng-controller="mainController" ng-init="initialize()">
+			<div class="container">
+
+				<!-- HEADER AND TODO COUNT -->
+
+				<form>
+					<div class="jumbotron">
+						<h1 align="center">BREAK</h1>
+						<h4 align="center">The Menu</h4>		
+
+                        <!-- Loop through the services array, assign a click handler, and set or
+                        remove the "active" css class if needed -->
+                        <div class="form-group">
+                        	<div class="row">
+							<ul>
+                        		<li ng-repeat="service in services" class="form-control input-lg" ng-click="toggleActive(service)" ng-class="{active:service.active}">
+                        			<!-- Notice the use of the currency filter, it will format the price -->
+                        			{{service.name}} <span>{{service.price | currency}}</span>
+                        		</li>
+                        	</ul>
+                        </div>
+                        <div class="total">
+                        	<!-- Calculate the total price of all chosen services. Format it as currency. -->
+                        	Total: <span>{{total() | currency}}</span>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg" ng-class="{active:service.active}" ng-click="placeOrder()">Order!</button>
+                    </div>
+                </form>         
+            </div>
+
+        </div>
+
+    </body>
+    </html>

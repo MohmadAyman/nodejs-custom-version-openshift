@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="expressNode">
+
+<head>
+	<meta charset="utf-8"/>
+	<title>No titile</title>
+
+	<link href="http://fonts.googleapis.com/css?family=Cookie|Open+Sans:1000,1000" rel="stylesheet" />
+
+	<script src="/lib/angular/angular.min.js"></script>
+	<script src="/js/userOrder.js"></script>
+	<script src="/js/AddMenu.js"></script>
+
+	<!-- bower:js -->
+	<script src="/lib/jquery/dist/jquery.js"></script>
+	<script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+	<!-- endbower -->
+	<!-- bower:css -->
+	<link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+	<!-- endbower -->
+	<!-- inject:js -->
+	<!-- endinject -->  
+	<!-- inject:css -->
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/styles.css">
+	<!-- endinject -->  
+	<!-- The main CSS file -->
+
+		<!--[if lt IE 9]>
+			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+			<![endif]-->
+
+		</head>
+		<!-- SET THE CONTROLLER AND GET ALL TODOS WITH INITIALIZE FUNCTION -->
+		<body ng-controller="mainController" ng-init="initialize()">
+
+			<!-- HEADER AND TODO COUNT -->
+
+			<form>
+				<div >
+					<h1 align="center">Break</h1>
+					<h4 align="center">Add your menu</h4>		
+
+                        <!-- Loop through the services array, assign a click handler, and set or
+                        remove the "active" css class if needed -->
+                        <div class="form-group">
+                        	<div>
+                        		<ul>
+                        			<li>
+                        				<input type="text" class="form-control input-sm text-center" placeholder="item"><input type="text" class="form-control input-sm text-center" placeholder="item">
+                        				<input type="text" class="form-control input-sm text-center" placeholder="item"><input type="text" class="form-control input-sm text-center" placeholder="It's Price">
+                        				<input type="text" class="form-control input-sm text-center" placeholder="item"><input type="text" class="form-control input-sm text-center" placeholder="Category">
+                        				<!-- Notice the use of the currency filter, it will format the price -->
+                        				<button type="submit" class="btn btn-primary btn-lg" ng-class="{active:service.active}" ng-click="placeOrder()">Add an item!</button>
+                        			</li>
+                        		</ul>
+                        	</div>
+
+                        	<button type="submit" class="btn btn-primary btn-lg" ng-class="{active:service.active}" ng-click="placeOrder()">Add an item!</button>
+                        </div>
+                    </form>         
+                </div>
+
+
+            </body>
+            </html>

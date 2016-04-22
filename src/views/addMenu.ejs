@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8"/>
+  <title><%=title%></title>
+
+  <link href="http://fonts.googleapis.com/css?family=Cookie|Open+Sans:400,700" rel="stylesheet" />
+
+  <!-- bower:js -->
+  <script src="/lib/jquery/dist/jquery.js"></script>
+  <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+  <!-- endbower -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css" />
+  <!-- endbower -->
+  <!-- inject:js -->
+  <script src="/js/AddMenu.js"></script>
+  <script src="/js/clientOrder.js"></script>
+  <script src="/js/userOrder.js"></script>
+  <!-- endinject -->  
+  <!-- inject:css -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/styles.css">
+  <!-- endinject -->  
+  <!-- The main CSS file -->
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+      <![endif]-->
+    </head>
+
+    <!-- Declare a new AngularJS app and associate the controller -->
+    <body>
+      <form name="signUpForm" method="post" action="/Client/auth/signup/">
+        <div class="jumbotron">
+          <h1 align="center">BREAK</h1>
+          <br>
+          <h4 align="center">Sign up!!!</h4>
+          <div id="todo-form" class="row">
+            <div class="col-sm-8 col-sm-offset-2 text-center">
+              <input type="tel" id="clientName" name="clientName" class="form-control input-md text-center" placeholder="Resturant name">
+              <br>  
+              <input type="password" name="clientPassword" id="clientPassword" class="form-control input-md text-center" placeholder="Password">
+              <br>
+              <input type="tel" id="phone" name="phone" class="form-control input-md text-center" placeholder="Phone number">
+              <br>  
+              <a button type="submit" class="btn btn-link btn-lg"  href="/">Sign up</button>
+              </div>
+            </div>
+          </div>
+        </form>   
+
+        <!-- Include AngularJS from Google's CDN -->
+      </body>
+      </html>
