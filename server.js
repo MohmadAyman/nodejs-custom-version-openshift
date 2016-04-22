@@ -95,7 +95,7 @@ var userRouter = require('./src/routes/userRouter.js')();
 var clientRouter = require('./src/routes/clientRouter.js')(io);
 var adminRouter = require('./src/routes/adminRouter.js');
 
-var port = process.env.OPENSHIFT_NODEJS_PORT || '8080';
+var port = process.env.OPENSHIFT_NODEJS_PORT || '8181';
 var ip = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1',
 
 app.use(express.static('public'));
