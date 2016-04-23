@@ -12,27 +12,30 @@ module.exports = function () {
 		password: 'password'
 	},
 	function(username,password,done){
-     var mongo_url = process.env.OPENSHIFT_MONGODB_DB_URL;
-mongodb.connect(mongo_url,function(err,db){
-	var collection = db.collection('userphone');
-	console.log('matched number is : ');
-	var x = parseInt(collection.find({username: username}).count());
-	console.log(x);
-	if (x===8){
-		console.log('Right !!');
-		done(null, false);
-	}
-	collection.findOne({username: username},function(err,results,mess){
-		console.log(results);
-		if (err) { done(err); }
-		if (results === 'null') { done(null, false); }
-		if(!results.username) { done(null, false); }
-		if (!results.username === username) { done(null, false); }				
-		if (!results.password === password) { done(null, false); }
-		done(null, results);
-	}
-	);
-})
-})
+		var url = 'mongodb://localhost:27017/orderApp';
+		if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
+			var url = process.env.OPENSHIFT_MONGODB_DB_URL;
+		}
+		mongodb.connect(url,function(err,db){
+			var collection = db.collection('userphone');
+			console.log('matched number is : ');
+			var x = parseInt(collection.find({username: username}).count());
+			console.log(x);
+			if (x===8){
+				console.log('Right !!');
+				done(null, false);
+			}
+			collection.findOne({username: username},function(err,results,mess){
+				console.log(results);
+				if (err) { done(err); }
+				if (results === 'null') { done(null, false); }
+				if(!results.username) { done(null, false); }
+				if (!results.username === username) { done(null, false); }				
+				if (!results.password === password) { done(null, false); }
+				done(null, results);
+			}
+			);
+		})
+	})
 	)		
 };

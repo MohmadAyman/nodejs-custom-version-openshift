@@ -66,8 +66,11 @@ var router = function(){
     userRouter.route('/auth/signup')
     .post(function (req,res) {
       console.log(req.body);
-     var mongo_url = process.env.OPENSHIFT_MONGODB_DB_URL;
-      mongodb.connect(mongo_url,function(err,db){
+      var url = 'mongodb://localhost:27017/orderApp';
+      if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
+        var url = process.env.OPENSHIFT_MONGODB_DB_URL;
+    }
+    mongodb.connect(url,function(err,db){
         var collection = db.collection('userphone');
         var user = {
             username: req.body.username,
@@ -81,7 +84,7 @@ var router = function(){
         })
         console.log('auth signin');
     })
-  });
+});
 
     userRouter.route('/auth/signin')
     .post(passport.authenticate('local',{

@@ -69,9 +69,11 @@ var router = function(io){
     clientRouter.route('/auth/signup')
     .post(function (req,res) {
       console.log(req.body);
-     var mongo_url = process.env.OPENSHIFT_MONGODB_DB_URL;
-
-      mongodb.connect(mongo_url,function(err,db){
+      var url = 'mongodb://localhost:27017/orderApp';
+      if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
+        var url = process.env.OPENSHIFT_MONGODB_DB_URL;
+    }
+    mongodb.connect(url,function(err,db){
         var collection = db.collection('userphone');
         var user = {
             username: req.body.username,
@@ -85,7 +87,7 @@ var router = function(io){
         })
         console.log('auth signin');
     })
-  });
+});
 
 // TODO The menu will be haard codded for now.
 clientRouter.route('/AddMenu')
@@ -123,7 +125,7 @@ clientRouter.route('/ordersUpdate')
     var toBeSent = [ name, menu];
     console.log(toBeSent);
 //    res.json(toBeSent);
-       io.emit('reciveOrder',toBeSent); 
+io.emit('reciveOrder',toBeSent); 
         // If i was to save the i orders in the db, should be done here
         console.log('client sent to interface');
     });        
@@ -146,7 +148,7 @@ clientRouter.route('/api/order/')
     var toBeSent = [ name, menu];
     console.log(toBeSent);
 //    res.json(toBeSent);
-       io.emit('reciveOrder',toBeSent); 
+io.emit('reciveOrder',toBeSent); 
 });
 
 return clientRouter;
