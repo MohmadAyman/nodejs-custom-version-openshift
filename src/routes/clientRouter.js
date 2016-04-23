@@ -69,16 +69,9 @@ var router = function(io){
     clientRouter.route('/auth/signup')
     .post(function (req,res) {
       console.log(req.body);
-      var connection_string = '127.0.0.1:27017/mynodeaecookup';
-// if OPENSHIFT env variables are present, use the available connection info:
-if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
-  connection_string = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
-  process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
-  process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +
-  process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
-  process.env.OPENSHIFT_APP_NAME;
-};
-      mongodb.connect(connection_string,function(err,db){
+     mongo_url = process.env.OPENSHIFT_MONGODB_DB_URL;
+
+      mongodb.connect(mongo_url,function(err,db){
         var collection = db.collection('userphone');
         var user = {
             username: req.body.username,
