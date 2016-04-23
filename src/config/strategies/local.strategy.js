@@ -12,9 +12,10 @@ module.exports = function () {
 		password: 'password'
 	},
 	function(username,password,done){
-		var url = 'mongodb://localhost:27017/orderApp';
-		if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
-			var url = process.env.OPENSHIFT_MONGODB_DB_URL;
+		var url = 'mongodb://localhost:27017/'+process.env.OPENSHIFT_APP_NAME;
+		if (process.env.OPENSHIFT_MONGODB_DB_URL) {
+			url = process.env.OPENSHIFT_MONGODB_DB_URL +
+			process.env.OPENSHIFT_APP_NAME;
 		}
 		mongodb.connect(url,function(err,db){
 			var collection = db.collection('userphone');

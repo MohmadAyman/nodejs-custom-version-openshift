@@ -66,9 +66,10 @@ var router = function(){
     userRouter.route('/auth/signup')
     .post(function (req,res) {
       console.log(req.body);
-      var url = 'mongodb://localhost:27017/orderApp';
-      if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
-        var url = process.env.OPENSHIFT_MONGODB_DB_URL;
+      var url = 'mongodb://localhost:27017/' + process.env.OPENSHIFT_APP_NAME;
+      if (process.env.OPENSHIFT_MONGODB_DB_URL) {
+        url = process.env.OPENSHIFT_MONGODB_DB_URL +
+        process.env.OPENSHIFT_APP_NAME;
     }
     mongodb.connect(url,function(err,db){
         var collection = db.collection('userphone');
@@ -78,6 +79,9 @@ var router = function(){
             orders: orders 
         };
         collection.insert(user,function (err, results) {
+            if(err){
+                console.log('Mongo connectio error is - '+ err);
+            }
             req.login(results,function () {
                 res.redirect('/');
             })
