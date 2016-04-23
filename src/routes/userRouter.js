@@ -65,29 +65,30 @@ var router = function(){
 
     userRouter.route('/auth/signup')
     .post(function (req,res) {
-      console.log(req.body);
-      var url = 'mongodb://localhost:27017/' + process.env.OPENSHIFT_APP_NAME;
-      if (process.env.OPENSHIFT_MONGODB_DB_URL) {
-        url = process.env.OPENSHIFT_MONGODB_DB_URL +
-        process.env.OPENSHIFT_APP_NAME;
-    }
-    mongodb.connect(url,function(err,db){
-        var collection = db.collection('userphone');
-        var user = {
-            username: req.body.username,
-            password: req.body.password,
-            orders: orders 
-        };
-        collection.insert(user,function (err, results) {
-            if(err){
-                console.log('Mongo connectio error is - '+ err);
-            }
-            req.login(results,function () {
-                res.redirect('/');
-            })
-        })
+    //   console.log(req.body);
+    //   var url = 'mongodb://localhost:27017/' + process.env.OPENSHIFT_APP_NAME;
+    //   if (process.env.OPENSHIFT_MONGODB_DB_URL) {
+    //     url = process.env.OPENSHIFT_MONGODB_DB_URL +
+    //     process.env.OPENSHIFT_APP_NAME;
+    // }
+    // console.log(url);
+    // mongodb.connect(url,function(err,db){
+    //     var collection = db.collection('userphone');
+    //     var user = {
+    //         username: req.body.username,
+    //         password: req.body.password,
+    //         orders: orders 
+    //     };
+    //     collection.insert(user,function (err, results) {
+    //         if(err){
+    //             console.log('Mongo connectio error is - '+ err);
+    //         }
+    //         req.login(results,function () {
+    //             res.redirect('/');
+    //         })
+    //     })
         console.log('auth signin');
-    })
+//    })
 });
 
     userRouter.route('/auth/signin')
