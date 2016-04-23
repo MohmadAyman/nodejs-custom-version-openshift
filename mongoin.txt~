@@ -1,0 +1,35 @@
+
+    *********************************************************************
+
+    You are accessing a service that is for use only by authorized users.
+    If you do not have authorization, discontinue use at once.
+    Any use of the services is subject to the applicable terms of the
+    agreement which can be found at:
+    https://www.openshift.com/legal
+
+    *********************************************************************
+
+    Welcome to OpenShift shell
+
+    This shell will assist you in managing OpenShift applications.
+
+    !!! IMPORTANT !!! IMPORTANT !!! IMPORTANT !!!
+    Shell access is quite powerful and it is possible for you to
+    accidentally damage your application.  Proceed with care!
+    If worse comes to worst, destroy your application with "rhc app delete"
+    and recreate it
+    !!! IMPORTANT !!! IMPORTANT !!! IMPORTANT !!!
+
+    Type "help" for more info.
+
+
+MongoDB shell version: 2.4.9
+connecting to: 127.3.192.130:27017/admin
+Welcome to the MongoDB shell.
+For interactive help, type "help".
+For more comprehensive documentation, see
+	http://docs.mongodb.org/
+Questions? Try the support group
+	http://groups.google.com/group/mongodb-user
+> [3G[J[3G^C
+bye

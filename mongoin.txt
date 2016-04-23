@@ -1,0 +1,5 @@
+use admin
+db.auth("admin","Xin8HNFDmUiW");
+use openshift
+db.stats();
+

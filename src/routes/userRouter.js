@@ -66,8 +66,7 @@ var router = function(){
     userRouter.route('/auth/signup')
     .post(function (req,res) {
       console.log(req.body);
-     mongo_url = process.env.OPENSHIFT_MONGODB_DB_URL;
-
+     var mongo_url = process.env.OPENSHIFT_MONGODB_DB_URL;
       mongodb.connect(mongo_url,function(err,db){
         var collection = db.collection('userphone');
         var user = {
